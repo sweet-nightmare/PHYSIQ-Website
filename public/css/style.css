@@ -1441,61 +1441,173 @@ body {
 
 /* --- 4. MOBILE (Max 768px) --- */
 @media (max-width: 768px) {
-    /* Hero */
+    
+    /* --- 1. HEADER FIX (Logo Kiri - User Kanan) --- */
+    .header-inner {
+        display: flex; /* Ganti grid ke flex agar mudah di-space */
+        justify-content: space-between; /* Logo kiri mentok, User kanan mentok */
+        align-items: center;
+        padding-left: 20px;  /* Padding Kiri Konsisten */
+        padding-right: 20px; /* Padding Kanan Konsisten */
+    }
+    
+    .nav {
+        display: none; /* Menu tengah disembunyikan di mobile */
+    }
+
+    /* --- 2. TYPOGRAPHY CONSISTENCY (Semua Section) --- */
+    /* Menyeragamkan semua Judul Utama */
+    .hero-fitness,
+    .section-title,
+    .why-title,
+    .facility-title,
+    .data-content h2,
+    .join-text h2 {
+        font-size: 32px !important; /* Ukuran standar judul mobile */
+        line-height: 1.2;
+    }
+
+    /* Menyeragamkan semua Teks Paragraf */
+    .hero-subtitle,
+    .why-content p,
+    .card-content p,
+    .science-item p,
+    .data-content p {
+        font-size: 14px !important; /* Ukuran standar teks mobile */
+    }
+
+    /* Menyeragamkan Ukuran Tombol */
+    .btn, .cta-button, .join-now-btn, .learn-more-btn {
+        font-size: 14px !important;
+        padding: 12px 30px !important; /* Padding tombol konsisten */
+    }
+    
+    /* Join Button khusus mobile agar tidak terlalu raksasa tapi tetap menonjol */
+    .join-now-btn {
+        font-size: 16px !important; 
+        padding: 15px 40px !important;
+        width: auto;
+    }
+
+
+    /* --- 3. HERO TITLE FIX (Persis 2 Baris) --- */
+    .hero-title-wrapper {
+        flex-direction: column; /* Baris 1: Logo, Baris 2: Teks */
+        gap: 10px;
+    }
+
+    .hero-logo {
+        height: 50px; /* Sesuaikan ukuran logo di mobile */
+        width: auto;
+    }
+
     .hero-fitness {
-        font-size: 48px;
-    }
-    .hero-subtitle {
-        font-size: 16px;
+        padding-left: 0;
+        margin-top: 0;
+        /* Font size sudah diatur di Typography Consistency di atas */
     }
 
-    /* Why Section */
+
+    /* --- 4. WHY TITLE FIX (Persis 2 Baris) --- */
     .why-title {
-        font-size: 32px;
-        flex-direction: column; /* Judul turun ke bawah */
-        gap: 5px;
-    }
-    
-    .why-item {
-        align-items: flex-start; /* Teks rata kiri di mobile */
-    }
-    
-    .why-content p {
-        font-size: 16px;
+        flex-wrap: wrap; /* Izinkan elemen turun ke bawah */
+        justify-content: center;
+        gap: 10px;
     }
 
-    /* Program & Science: 1 Kolom */
-    .program-grid, .science-grid {
+    /* Trik: Memaksa kata "WHY" memenuhi lebar 100% agar elemen berikutnya turun */
+    .why-title .why-why:first-child {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px; /* Jarak antara Baris 1 (WHY) dan Baris 2 (Logo + ?) */
+    }
+
+    /* Logo dan Tanda Tanya akan otomatis berada di baris ke-2 sejajar */
+    .why-title .section-logo {
+        height: 32px; /* Sesuaikan tinggi logo agar sejajar teks */
+    }
+
+
+    /* --- 5. FOOTER FIX (2 Kolom, Rata Kiri, Simetris) --- */
+    .footer-main {
+        padding: 40px 20px; /* Gap atas bawah kiri kanan container aman */
+        text-align: center; /* Default center untuk logo & map */
+    }
+
+    .footer-grid-new {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Pastikan Brand & Map di tengah */
+        gap: 40px;
+    }
+
+    /* Kolom Link: Rata Kiri & 2 Kolom */
+    .footer-col-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Membagi menjadi 2 kolom seimbang */
+        width: 100%; /* Full width agar simetris kiri-kanan */
+        gap: 30px 10px; /* Jarak antar baris besar, antar kolom kecil */
+        text-align: left; /* PENTING: Teks rata kiri */
+    }
+    
+    /* Pastikan judul link dan isi link rata kiri */
+    .link-group h4, 
+    .link-group a {
+        text-align: left;
+    }
+
+    /* Penyesuaian Map & Form di Mobile */
+    .footer-col-map, 
+    .footer-col-brand,
+    .mini-contact-form {
+        width: 100%; /* Full width di mobile */
+        max-width: 320px; /* Batasi agar tidak terlalu lebar */
+    }
+    
+    .mini-contact-form {
+        justify-content: center; /* Form center */
+        margin: 0 auto 10px auto;
+    }
+
+
+    /* --- 6. DATA SECTION & JOIN SECTION PADDING --- */
+    /* Menyamakan gap section lainnya */
+    .data-section {
+        padding: 60px 20px;
+    }
+    .data-section .container {
         grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .data-image-wrapper {
+        width: 100%;
+        padding: 20px; /* Ruang untuk border siku */
+        display: flex;
+        justify-content: center;
+    }
+    .data-image {
+        height: 300px;
     }
 
-    /* Join Section Mobile Fix */
     .join-container-layout {
+        padding: 60px 20px;
         min-height: auto;
         gap: 40px;
-        text-align: center;
-        padding: 60px 0;
     }
     
-    .join-text, .join-btn-wrapper, .join-social {
+    /* Reset posisi absolute Join Section agar flow ke bawah rapi */
+    .join-text, 
+    .join-btn-wrapper, 
+    .join-social {
         position: relative;
         top: auto; left: auto; right: auto; bottom: auto;
         transform: none;
-        width: 100%;
         text-align: center;
+        width: 100%;
     }
     
     .social-icons-row {
         justify-content: center;
-    }
-
-    /* Footer Mobile */
-    .footer-grid-new {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-col-links {
-        grid-template-columns: repeat(2, 1fr); /* Link jadi 2 kolom di HP */
     }
 }
 
