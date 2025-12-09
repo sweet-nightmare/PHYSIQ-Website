@@ -1530,10 +1530,6 @@ body {
         padding-top: 0;
     }
     
-    .why-title .why-why:last-child {
-        /* Will automatically stay inline with logo */
-    }
-    
     /* ========== 5. FOOTER FIX ========== */
     .footer-main {
         padding: 40px 20px;
