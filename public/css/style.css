@@ -29,8 +29,16 @@ body {
     padding: 0 20px;
 }
 
-.highlight {
+/* ============================================
+   ALL TITLE
+   ============================================ */
+
+.highlight,
+.science-title-wrapper h2 .highlight,
+.join-social h3 span.highlight {
     color: var(--primary-red);
+    -webkit-text-stroke: 0;
+    font-weight: 700;
 }
 
 /* ============================================
@@ -81,16 +89,6 @@ body {
     text-decoration: none;
     font-size: 14px;
     letter-spacing: 1px;
-}
-
-/* responsive: fallback on small screens */
-@media (max-width: 1024px) {
-    .header-inner {
-        grid-template-columns: auto auto; 
-        grid-auto-flow: column;
-        justify-content: space-between;
-    }
-    .header-inner .nav { display: none; } 
 }
 
 .header.scrolled {
@@ -262,12 +260,6 @@ body {
     padding-left: 10px;
 }
 
-@media (max-width: 768px) {
-    .hero-fitness {
-        font-size: 60px;
-    }
-}
-
 .hero .hero-prev {
     left: 20px;
 }
@@ -391,16 +383,57 @@ body {
 }
 
 .why-number {
+    position: relative;
     min-width: 60px;
     min-height: 60px;
-    background: var(--primary-red);
+    background: var(--light-gray); /* Abu Gelap */
+    border: 1px solid #333;
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
-    font-size: 28px;
+    font-weight: 800;
+    font-size: 24px;
     flex-shrink: 0;
-    color: var(--white);
+    transition: all 0.4s ease;
+    
+    /* Tech Shape */
+    clip-path: polygon(
+        0 0, 
+        75% 0, 
+        100% 25%, 
+        100% 100%, 
+        0 100%
+    );
+}
+
+/* Accent Bar di atas nomor (Animasi smooth) */
+.why-number::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--primary-red);
+    transition: width 0.4s ease;
+}
+
+/* Hover Effect Why Number */
+.why-item:hover .why-number {
+    background: #222;
+    border-color: var(--primary-red);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    color: var(--primary-red);
+}
+
+.why-item:hover .why-number::before {
+    width: 100%;
+}
+
+.why-number:hover::before {
+    width: 100%;
 }
 
 .why-content {
@@ -469,94 +502,6 @@ body {
     bottom: -25px;
     left: 0;
     right: 0;
-}
-
-/* Responsive */
-@media (max-width: 1400px) {
-    .why-inner {
-        grid-template-columns: 450px 300px 300px;
-        gap: 40px;
-    }
-    
-    .why-image {
-        height: 400px;
-    }
-    
-    .why-column:nth-child(2) {
-        transform: translateY(-50px);
-    }
-    
-    .why-column:nth-child(3) {
-        transform: translateY(50px);
-    }
-}
-
-@media (max-width: 1200px) {
-    .why-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-    }
-    
-    .why-left {
-        grid-column: 1 / -1;
-    }
-    
-    .why-title {
-        justify-content: center;
-        font-size: 42px;
-    }
-    
-    .why-column:last-child {
-        display: none;
-    }
-    
-    .why-column:nth-child(2) {
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 820px) {
-    .why-physiq {
-        padding: 60px 20px;
-    }
-    
-    .why-inner {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .why-title {
-        font-size: 36px;
-        gap: 12px;
-        margin-bottom: 30px;
-    }
-    
-    .why-title .section-logo {
-        height: 36px;
-    }
-    
-    .why-number {
-        min-width: 50px;
-        min-height: 50px;
-        font-size: 24px;
-    }
-    
-    .why-content p {
-        font-size: 16px;
-    }
-    
-    .why-image {
-        height: 300px;
-    }
-    
-    .why-column:nth-child(2),
-    .why-column:nth-child(3) {
-        transform: translateY(0);
-    }
-    
-    .accent-bar {
-        display: none;
-    }
 }
 
 /* ============================================
@@ -683,20 +628,19 @@ body {
 }
 
 .programs .container {
-    max-width: 1400px; 
-    padding: 0 60px;  
+    max-width: 95%; 
+    padding: 0 20px;  
     margin: 0 auto;    
 }
 
 .program-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 50px; 
+    gap: 15px; 
     position: relative;
     z-index: 2;
     justify-content: center;
 }
-
 /* --- CARD DESIGN --- */
 .program-card {
     background: var(--light-gray); 
@@ -747,6 +691,12 @@ body {
     color: var(--white);
     text-transform: uppercase;
     letter-spacing: 1px;
+    /* Tinggi judul */
+    line-height: 1.2;     
+    min-height: 2.4em;     
+    display: flex;         
+    align-items: end;      
+    margin-bottom: 20px;
 }
 
 .card-content p {
@@ -786,28 +736,6 @@ body {
     color: var(--primary-red);
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1200px) {
-    .programs .container {
-        padding: 0 40px; 
-    }
-    .program-grid {
-        gap: 30px; 
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
-
-@media (max-width: 600px) {
-    .programs .container {
-        padding: 0 20px;
-    }
-    .program-grid {
-        grid-template-columns: 1fr; 
-        gap: 30px;
-    }
-}
-
-
 /* ============================================
    SCIENCE SECTION
    ============================================ */
@@ -833,21 +761,34 @@ body {
 }
 
 .science-icon {
-    width: 80px;
-    height: 80px;
-    background-color: var(--primary-red);
+    width: 90px;
+    height: 90px;
+    background: var(--light-gray); 
+    border: 2px solid var(--primary-red); 
     border-radius: 50%;
+    clip-path: none; 
+    
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 30px;
+    transition: all 0.4s ease;
+    position: relative;
 }
 
-.science-icon:hover {
-    /* filter: grayscale(0%) contrast(120%); */
-    transform: scale(1.05);
-    transition: all 0.5s ease;
-    cursor: pointer;
+/* Accent bar untuk icon */
+.science-icon::before {
+    display: none;
+}
+
+.science-item:hover .science-icon {
+    transform: scale(1.1);
+    background: var(--primary-red); /* Berubah jadi merah saat hover */
+    box-shadow: 0 10px 20px rgba(178, 34, 34, 0.4);
+}
+
+.science-item:hover .science-icon::before {
+    width: 100%;
 }
 
 .science-icon-img {
@@ -855,17 +796,6 @@ body {
     width: 48px;
     height: 48px;
     object-fit: contain;
-}
-
-@media (min-width: 992px) {
-    .science-icon {
-        width: 96px;
-        height: 96px;
-    }
-    .science-icon-img {
-        width: 56px;
-        height: 56px;
-    }
 }
 
 .science-item h3 {
@@ -918,9 +848,10 @@ body {
     left: -20px;
     width: 250px;
     height: 250px;
-    border-top: 15px solid var(--primary-red); 
+    border-top: 15px solid var(--primary-red);
     border-left: 15px solid var(--primary-red);
     z-index: 1;
+    /* filter: drop-shadow(2px 2px 0px var(--primary-red)); */
 }
 
 .data-image-wrapper::after {
@@ -933,6 +864,7 @@ body {
     border-bottom: 15px solid var(--primary-red);
     border-right: 15px solid var(--primary-red);
     z-index: 1;
+    /* filter: drop-shadow(2px 2px 0px var(--primary-red)); */
 }
 
 .data-image {
@@ -971,25 +903,6 @@ body {
     margin-bottom: 25px;
     line-height: 1.8;
     max-width: 90%; /* Agar teks tidak terlalu lebar saat di-center */
-}
-
-.cta-button {
-    background-color: var(--primary-red); /* Kuning */
-    color: var(--white); 
-    padding: 15px 40px;
-    border: none;
-    font-size: 14px;
-    font-weight: 800; /* Bold */
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: transform 0.3s;
-    border-radius: 0; /* Kotak tajam (sharp) sesuai mockup */
-}
-
-.cta-button:hover {
-    transform: scale(1.05);
-    background-color: var(--primary-red);
 }
 
 /* ============================================
@@ -1050,24 +963,6 @@ body {
     z-index: 3;
 }
 
-.join-now-btn {
-    background-color: var(--primary-red); /* Kuning Neon */
-    color: var(--white);
-    font-size: 24px;
-    font-weight: 800;
-    padding: 20px 60px;
-    border: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.join-now-btn:hover {
-    transform: scale(1.05);
-    background-color: var(--primary-red);
-}
-
 /* Posisi Kanan Bawah: Follow Us */
 .join-social {
     position: absolute;
@@ -1083,11 +978,6 @@ body {
     font-weight: 600;
     margin-bottom: 0px;
     text-transform: uppercase;
-}
-
-.join-social h3 span.highlight {
-    font-weight: 700; /* "US" tebal & kuning */
-    color: var(--primary-red);
 }
 
 .social-icons-row {
@@ -1177,31 +1067,6 @@ body {
     line-height: normal; 
 }
 
-.mini-contact-form button {
-    height: 100%; 
-    background: var(--primary-red); 
-    color: var(--white);     
-    border: none;
-    padding: 0 15px;
-    font-weight: 800;    
-    font-size: 12px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    width: 125px;
-    
-    /* Flexbox: Solusi paling ampuh untuk Center Vertikal & Horizontal */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mini-contact-form button:hover {
-    transform: scale(1.05);
-    background-color: var(--primary-red);
-    transition: transform 0.3s ease;
-}
-
 /* Col 2: Map */
 .footer-col-map {
     width: 255px;
@@ -1260,106 +1125,239 @@ body {
     opacity: 0.8;
 }
 
-/* Responsive Fixes */
-@media (max-width: 1024px) {
-    .footer-grid-new {
-        grid-template-columns: 1fr 1fr;
-    }
-    .footer-col-links {
-        grid-column: 1 / -1;
-        grid-template-columns: repeat(3, 1fr);
-    }
+
+/* ============================================
+   ALL BUTTON STYLES
+   ============================================ */
+
+.btn, .cta-button, .join-now-btn, .mini-contact-form button {
+    background: var(--light-gray);
+    color: var(--white);
+    border: 1px solid var(--primary-red);
+    padding: 15px 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
     
-    .join-text h2 { font-size: 42px; }
-    .join-now-btn { font-size: 24px; padding: 15px 40px; }
+    /* Tech Shape */
+    clip-path: polygon(
+        0 0, 
+        90% 0, 
+        100% 30%, 
+        100% 100%, 
+        10% 100%,
+        0 70%
+    );
 }
 
-@media (max-width: 768px) {
-    .join-section { min-height: auto; padding: 80px 0; }
-    .join-container-layout {
-        min-height: auto;
-        gap: 60px;
-    }
-    
-    /* Reset posisi absolute di mobile agar flow ke bawah rapi */
-    .join-text, 
-    .join-btn-wrapper, 
-    .join-social {
-        position: relative;
-        top: auto; left: auto; right: auto; bottom: auto;
-        transform: none;
-        text-align: center;
-        width: 100%;
-    }
-    
-    .join-btn-wrapper { margin: 20px 0; }
-    .join-now-btn:hover { transform: scale(1.05); } /* Hapus translate di mobile */
-    .social-icons-row { justify-content: center; }
-    
-    .footer-grid-new { grid-template-columns: 1fr; gap: 40px; }
-    .footer-col-links { grid-template-columns: repeat(2, 1fr); }
+/* Button Hover Effect (Isi jadi merah, teks putih) */
+.btn:hover, .cta-button:hover, .join-now-btn:hover, .mini-contact-form button:hover {
+    background: var(--primary-red);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(178, 34, 34, 0.4);
+}
+
+/* Khusus Join Button agar ukurannya tetap besar sesuai desain awal */
+.join-now-btn {
+    font-size: 24px;
+    padding: 20px 60px;
+}
+
+/* Khusus Mini Button di footer agar muat */
+.mini-contact-form button {
+    width: auto;
+    padding: 0 20px;
+    font-size: 12px;
+    clip-path: none; /* Footer button terlalu kecil untuk clip-path */
+    border-radius: 0;
+    border: 1px solid var(--primary-red);
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE STYLES
    ============================================ */
-@media (max-width: 1024px) {
-    .program-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+/* --- 1. LAPTOP & SMALL DESKTOP (Max 1400px) --- */
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 40px;
+    }
+
+    /* Why Section: Layout mengecil */
+    .why-inner {
+        grid-template-columns: 1.5fr 1fr; /* Hapus kolom gambar ke-3 agar muat */
+        gap: 40px;
     }
     
-    .science-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .why-column:nth-child(3) {
+        display: none; /* Sembunyikan gambar paling kanan */
     }
-    
-    .footer-links {
-        grid-template-columns: repeat(3, 1fr);
+
+    .why-column:nth-child(2) {
+        transform: none; /* Reset posisi vertikal */
+        margin-top: 50px;
     }
 }
 
-@media (max-width: 768px) {
-    .nav {
+/* --- 2. TABLET LANDSCAPE / NETBOOK (Max 1200px) --- */
+@media (max-width: 1200px) {
+    .section-title, .why-title, .data-content h2, .join-text h2 {
+        font-size: 36px; /* Perkecil font judul */
+    }
+
+    /* Program Grid: Jadi 2 kolom */
+    .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    /* Data Section: Gap diperkecil */
+    .data-section .container {
+        gap: 60px;
+    }
+    
+    .data-image-wrapper::before,
+    .data-image-wrapper::after {
+        width: 150px; height: 150px; /* Perkecil ornamen siku */
+    }
+    
+    .data-image {
+        height: 400px;
+    }
+
+    /* Footer: Grid 2 kolom */
+    .footer-grid-new {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-col-links {
+        grid-column: 1 / -1; /* Link pindah ke bawah full width */
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* --- 3. TABLET PORTRAIT (Max 992px) --- */
+@media (max-width: 992px) {
+    /* Header: Sembunyikan Navigasi Text */
+    .header-inner .nav {
         display: none;
     }
     
-    .hero-logo {
-        height: 60px;
+    /* Why Section: Stack Vertikal */
+    .why-inner {
+        grid-template-columns: 1fr;
     }
     
-    .hero-divider {
-        width: 150px;
+    .why-image {
+        height: 300px;
+    }
+
+    /* Data Section: Stack Vertikal */
+    .data-section {
+        padding: 60px 20px;
     }
     
-    .hero-subtitle {
-        font-size: 18px;
+    .data-section .container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .data-image-wrapper {
+        width: 80%;
+        margin: 0 auto;
     }
     
-    .facility-title {
+    /* Science: Stack Vertikal (opsional: bisa 2 kolom) */
+    .science-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* --- 4. MOBILE (Max 768px) --- */
+@media (max-width: 768px) {
+    /* Hero */
+    .hero-fitness {
         font-size: 48px;
     }
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    /* Why Section */
+    .why-title {
+        font-size: 32px;
+        flex-direction: column; /* Judul turun ke bawah */
+        gap: 5px;
+    }
     
-    .why-grid {
+    .why-item {
+        align-items: flex-start; /* Teks rata kiri di mobile */
+    }
+    
+    .why-content p {
+        font-size: 16px;
+    }
+
+    /* Program & Science: 1 Kolom */
+    .program-grid, .science-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Join Section Mobile Fix */
+    .join-container-layout {
+        min-height: auto;
+        gap: 40px;
+        text-align: center;
+        padding: 60px 0;
+    }
+    
+    .join-text, .join-btn-wrapper, .join-social {
+        position: relative;
+        top: auto; left: auto; right: auto; bottom: auto;
+        transform: none;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .social-icons-row {
+        justify-content: center;
+    }
+
+    /* Footer Mobile */
+    .footer-grid-new {
         grid-template-columns: 1fr;
     }
     
-    .program-grid {
-        grid-template-columns: 1fr;
+    .footer-col-links {
+        grid-template-columns: repeat(2, 1fr); /* Link jadi 2 kolom di HP */
+    }
+}
+
+/* --- 5. SMALL MOBILE (Max 480px) --- */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 28px;
     }
     
-    .science-grid {
-        grid-template-columns: 1fr;
+    .why-number {
+        min-width: 50px; 
+        min-height: 50px;
+        font-size: 20px;
     }
     
-    .data-section .container,
-    .join-section .container {
-        grid-template-columns: 1fr;
+    .program-card {
+        padding: 30px 20px;
     }
     
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-links {
-        grid-template-columns: repeat(2, 1fr);
+    .footer-col-links {
+        grid-template-columns: 1fr; /* Link jadi 1 kolom list ke bawah */
+        text-align: center;
     }
 }
