@@ -1337,298 +1337,444 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE STYLES
+   RESPONSIVE DESIGN - COMPLETE OVERHAUL
+   Patch untuk: Header, Title Consistency, Footer
    ============================================ */
 
-/* --- 1. LAPTOP & SMALL DESKTOP (Max 1400px) --- */
-@media (max-width: 1400px) {
-    .container {
-        max-width: 1200px;
-        padding: 0 40px;
-    }
-
-    /* Why Section: Layout mengecil */
-    .why-inner {
-        grid-template-columns: 1.5fr 1fr; /* Hapus kolom gambar ke-3 agar muat */
-        gap: 40px;
-    }
+/* --- GLOBAL TYPOGRAPHY CONSISTENCY --- */
+:root {
+    /* Desktop Sizes */
+    --title-size-desktop: 48px;
+    --subtitle-size-desktop: 24px;
+    --text-size-desktop: 16px;
+    --button-size-desktop: 14px;
     
-    .why-column:nth-child(3) {
-        display: none; /* Sembunyikan gambar paling kanan */
-    }
-
-    .why-column:nth-child(2) {
-        transform: none; /* Reset posisi vertikal */
-        margin-top: 50px;
-    }
+    /* Tablet Sizes */
+    --title-size-tablet: 40px;
+    --subtitle-size-tablet: 20px;
+    --text-size-tablet: 15px;
+    
+    /* Mobile Sizes */
+    --title-size-mobile: 32px;
+    --subtitle-size-mobile: 18px;
+    --text-size-mobile: 14px;
+    --button-size-mobile: 13px;
 }
 
-/* --- 2. TABLET LANDSCAPE / NETBOOK (Max 1200px) --- */
+/* ============================================
+   LAPTOP & DESKTOP (Default - No Changes)
+   ============================================ */
+/* Semua sudah perfect di desktop, skip */
+
+/* ============================================
+   TABLET LANDSCAPE (Max 1200px)
+   ============================================ */
 @media (max-width: 1200px) {
-    .section-title, .why-title, .data-content h2, .join-text h2 {
-        font-size: 36px; /* Perkecil font judul */
-    }
-
-    /* Program Grid: Jadi 2 kolom */
-    .program-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
-    /* Data Section: Gap diperkecil */
-    .data-section .container {
-        gap: 60px;
-    }
-    
-    .data-image-wrapper::before,
-    .data-image-wrapper::after {
-        width: 150px; height: 150px; /* Perkecil ornamen siku */
-    }
-    
-    .data-image {
-        height: 400px;
-    }
-
-    /* Footer: Grid 2 kolom */
-    .footer-grid-new {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-    }
-    
-    .footer-col-links {
-        grid-column: 1 / -1; /* Link pindah ke bawah full width */
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
-
-/* --- 3. TABLET PORTRAIT (Max 992px) --- */
-@media (max-width: 992px) {
-    /* Header: Sembunyikan Navigasi Text */
-    .header-inner .nav {
-        display: none;
-    }
-    
-    /* Why Section: Stack Vertikal */
-    .why-inner {
-        grid-template-columns: 1fr;
-    }
-    
-    .why-image {
-        height: 300px;
-    }
-
-    /* Data Section: Stack Vertikal */
-    .data-section {
-        padding: 60px 20px;
-    }
-    
-    .data-section .container {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .data-image-wrapper {
-        width: 80%;
-        margin: 0 auto;
-    }
-    
-    /* Science: Stack Vertikal (opsional: bisa 2 kolom) */
-    .science-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-}
-
-/* --- 4. MOBILE (Max 768px) --- */
-@media (max-width: 768px) {
-    
-    /* --- 1. HEADER FIX (Logo Kiri - User Kanan) --- */
-    .header-inner {
-        display: flex; /* Ganti grid ke flex agar mudah di-space */
-        justify-content: space-between; /* Logo kiri mentok, User kanan mentok */
-        align-items: center;
-        padding-left: 20px;  /* Padding Kiri Konsisten */
-        padding-right: 20px; /* Padding Kanan Konsisten */
-    }
-    
-    .nav {
-        display: none; /* Menu tengah disembunyikan di mobile */
-    }
-
-    /* --- 2. TYPOGRAPHY CONSISTENCY (Semua Section) --- */
-    /* Menyeragamkan semua Judul Utama */
-    .hero-fitness,
+    /* Typography Adjustment */
     .section-title,
     .why-title,
     .facility-title,
     .data-content h2,
-    .join-text h2 {
-        font-size: 32px !important; /* Ukuran standar judul mobile */
-        line-height: 1.2;
+    .join-text h2,
+    .join-social h3 {
+        font-size: var(--title-size-tablet) !important;
     }
-
-    /* Menyeragamkan semua Teks Paragraf */
+    
     .hero-subtitle,
     .why-content p,
     .card-content p,
     .science-item p,
     .data-content p {
-        font-size: 14px !important; /* Ukuran standar teks mobile */
+        font-size: var(--text-size-tablet) !important;
     }
+}
 
-    /* Menyeragamkan Ukuran Tombol */
-    .btn, .cta-button, .join-now-btn, .learn-more-btn {
-        font-size: 14px !important;
-        padding: 12px 30px !important; /* Padding tombol konsisten */
+/* ============================================
+   TABLET PORTRAIT (Max 992px)
+   ============================================ */
+@media (max-width: 992px) {
+    /* Header Fix: Hide Nav */
+    .header-inner .nav {
+        display: none;
     }
     
-    /* Join Button khusus mobile agar tidak terlalu raksasa tapi tetap menonjol */
+    /* Why Section: Stack Vertical */
+    .why-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .why-column:nth-child(2),
+    .why-column:nth-child(3) {
+        transform: translateY(0) !important;
+    }
+}
+
+/* ============================================
+   MOBILE (Max 768px) - CRITICAL FIXES
+   ============================================ */
+@media (max-width: 768px) {
+    
+    /* ========== 1. HEADER FIX ========== */
+    .header-inner {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        grid-template-columns: unset !important;
+        gap: 0 !important;
+    }
+    
+    .header-inner .logo {
+        justify-self: unset;
+        margin-right: auto;
+    }
+    
+    .header-inner .user-icon {
+        justify-self: unset;
+        margin-left: auto;
+    }
+    
+    .header-inner .nav {
+        display: none;
+    }
+    
+    /* ========== 2. TYPOGRAPHY CONSISTENCY ========== */
+    /* ALL TITLES - 32px */
+    .hero-fitness,
+    .section-title,
+    .why-title,
+    .facility-title,
+    .data-content h2,
+    .join-text h2,
+    .join-social h3 {
+        font-size: var(--title-size-mobile) !important;
+        line-height: 1.2;
+    }
+    
+    /* ALL SUBTITLES - 18px */
+    .hero-subtitle {
+        font-size: var(--subtitle-size-mobile) !important;
+    }
+    
+    /* ALL BODY TEXT - 14px */
+    .why-content p,
+    .card-content p,
+    .science-item p,
+    .data-content p,
+    .footer-motto,
+    .address-box p,
+    .link-group a {
+        font-size: var(--text-size-mobile) !important;
+    }
+    
+    /* ALL BUTTONS - 13px */
+    .btn,
+    .cta-button,
+    .learn-more-btn,
+    .mini-contact-form button {
+        font-size: var(--button-size-mobile) !important;
+        padding: 12px 30px !important;
+    }
+    
+    /* Join Button Larger */
     .join-now-btn {
-        font-size: 16px !important; 
+        font-size: 18px !important;
         padding: 15px 40px !important;
-        width: auto;
     }
-
-
-    /* --- 3. HERO TITLE FIX (Persis 2 Baris) --- */
+    
+    /* ========== 3. HERO TITLE FIX (Exactly 2 Lines) ========== */
     .hero-title-wrapper {
-        flex-direction: column; /* Baris 1: Logo, Baris 2: Teks */
-        gap: 10px;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
     }
-
+    
     .hero-logo {
-        height: 50px; /* Sesuaikan ukuran logo di mobile */
+        height: 50px;
         width: auto;
+        padding-top: 0;
     }
-
+    
     .hero-fitness {
         padding-left: 0;
-        margin-top: 0;
-        /* Font size sudah diatur di Typography Consistency di atas */
+        padding-top: 0;
+        margin: 0;
+        font-size: 50px !important; /* Sedikit lebih besar untuk balance */
     }
-
-
-    /* --- 4. WHY TITLE FIX (Persis 2 Baris) --- */
+    
+    .hero-divider {
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    /* ========== 4. WHY TITLE FIX (Exactly 2 Lines) ========== */
     .why-title {
-        flex-wrap: wrap; /* Izinkan elemen turun ke bawah */
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
+        text-align: center;
     }
-
-    /* Trik: Memaksa kata "WHY" memenuhi lebar 100% agar elemen berikutnya turun */
+    
+    /* Force WHY to be 100% width = new line */
     .why-title .why-why:first-child {
         width: 100%;
         display: block;
-        margin-bottom: 5px; /* Jarak antara Baris 1 (WHY) dan Baris 2 (Logo + ?) */
+        margin-bottom: 5px;
     }
-
-    /* Logo dan Tanda Tanya akan otomatis berada di baris ke-2 sejajar */
+    
+    /* Logo and ? stay together on line 2 */
     .why-title .section-logo {
-        height: 32px; /* Sesuaikan tinggi logo agar sejajar teks */
+        height: 28px;
+        padding-top: 0;
     }
-
-
-    /* --- 5. FOOTER FIX (2 Kolom, Rata Kiri, Simetris) --- */
+    
+    .why-title .why-why:last-child {
+        /* Will automatically stay inline with logo */
+    }
+    
+    /* ========== 5. FOOTER FIX ========== */
     .footer-main {
-        padding: 40px 20px; /* Gap atas bawah kiri kanan container aman */
-        text-align: center; /* Default center untuk logo & map */
+        padding: 40px 20px;
+        text-align: center;
     }
-
+    
     .footer-grid-new {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Pastikan Brand & Map di tengah */
+        align-items: center;
         gap: 40px;
     }
-
-    /* Kolom Link: Rata Kiri & 2 Kolom */
+    
+    /* Brand & Map: Center */
+    .footer-col-brand,
+    .footer-col-map {
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+    }
+    
+    .mini-contact-form {
+        justify-content: center;
+        margin: 0 auto 10px auto;
+        max-width: 100%;
+    }
+    
+    /* Links: 2 Columns, Left Aligned, Symmetric Padding */
     .footer-col-links {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Membagi menjadi 2 kolom seimbang */
-        width: 100%; /* Full width agar simetris kiri-kanan */
-        gap: 30px 10px; /* Jarak antar baris besar, antar kolom kecil */
-        text-align: left; /* PENTING: Teks rata kiri */
-    }
-    
-    /* Pastikan judul link dan isi link rata kiri */
-    .link-group h4, 
-    .link-group a {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 500px;
+        gap: 30px 20px;
         text-align: left;
-    }
-
-    /* Penyesuaian Map & Form di Mobile */
-    .footer-col-map, 
-    .footer-col-brand,
-    .mini-contact-form {
-        width: 100%; /* Full width di mobile */
-        max-width: 320px; /* Batasi agar tidak terlalu lebar */
+        padding-left: 30px;  /* Symmetric padding */
+        padding-right: 30px; /* Symmetric padding */
     }
     
-    .mini-contact-form {
-        justify-content: center; /* Form center */
-        margin: 0 auto 10px auto;
+    .link-group h4,
+    .link-group a {
+        text-align: left !important;
     }
-
-
-    /* --- 6. DATA SECTION & JOIN SECTION PADDING --- */
-    /* Menyamakan gap section lainnya */
+    
+    /* ========== 6. SECTION SPACING CONSISTENCY ========== */
+    .hero,
+    .why-physiq,
+    .facility,
+    .programs,
+    .science,
+    .data-section,
+    .join-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .why-inner {
+        padding-top: 0;
+    }
+    
+    /* ========== 7. WHY SECTION MOBILE ========== */
+    .why-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-bottom: 0;
+    }
+    
+    .why-column:nth-child(3) {
+        display: none; /* Hide 2nd image on mobile */
+    }
+    
+    .why-image {
+        height: 300px;
+    }
+    
+    .accent-bar {
+        display: none; /* Hide accent bars on mobile */
+    }
+    
+    /* ========== 8. DATA SECTION MOBILE ========== */
     .data-section {
         padding: 60px 20px;
     }
+    
     .data-section .container {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+    
     .data-image-wrapper {
         width: 100%;
-        padding: 20px; /* Ruang untuk border siku */
-        display: flex;
-        justify-content: center;
+        padding: 20px;
     }
+    
     .data-image {
         height: 300px;
     }
-
+    
+    .data-image-wrapper::before,
+    .data-image-wrapper::after {
+        width: 100px;
+        height: 100px;
+        border-width: 8px;
+    }
+    
+    .data-image-wrapper::before {
+        top: -10px;
+        left: -10px;
+    }
+    
+    .data-image-wrapper::after {
+        bottom: -10px;
+        right: -10px;
+    }
+    
+    /* ========== 9. PROGRAM CARDS MOBILE ========== */
+    .program-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .program-card {
+        min-height: 280px;
+        padding: 30px 25px;
+    }
+    
+    /* ========== 10. SCIENCE GRID MOBILE ========== */
+    .science-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .science-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .science-icon-img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* ========== 11. JOIN SECTION MOBILE ========== */
     .join-container-layout {
-        padding: 60px 20px;
         min-height: auto;
+        padding: 60px 20px;
         gap: 40px;
     }
     
-    /* Reset posisi absolute Join Section agar flow ke bawah rapi */
-    .join-text, 
-    .join-btn-wrapper, 
+    /* Reset absolute positioning */
+    .join-text,
+    .join-btn-wrapper,
     .join-social {
-        position: relative;
-        top: auto; left: auto; right: auto; bottom: auto;
-        transform: none;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
         text-align: center;
         width: 100%;
+    }
+    
+    .join-text h2 {
+        font-size: 32px !important;
     }
     
     .social-icons-row {
         justify-content: center;
     }
+    
+    .social-icons-row a img {
+        height: 35px;
+    }
 }
 
-/* --- 5. SMALL MOBILE (Max 480px) --- */
+/* ============================================
+   SMALL MOBILE (Max 480px)
+   ============================================ */
 @media (max-width: 480px) {
-    .section-title {
-        font-size: 28px;
+    /* Further reduce padding */
+    .header-inner {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
     
+    /* Smaller titles */
+    .hero-fitness,
+    .section-title,
+    .why-title,
+    .facility-title {
+        font-size: 28px !important;
+    }
+    
+    .data-content h2,
+    .join-text h2 {
+        font-size: 26px !important;
+    }
+    
+    /* Why Number Smaller */
     .why-number {
-        min-width: 50px; 
+        min-width: 50px;
         min-height: 50px;
         font-size: 20px;
     }
     
-    .program-card {
-        padding: 30px 20px;
+    /* Footer 1 Column */
+    .footer-col-links {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     
-    .footer-col-links {
-        grid-template-columns: 1fr; /* Link jadi 1 kolom list ke bawah */
-        text-align: center;
+    .link-group h4,
+    .link-group a {
+        text-align: center !important;
+    }
+    
+    /* Join Button Smaller */
+    .join-now-btn {
+        font-size: 16px !important;
+        padding: 12px 30px !important;
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE (Max Height 500px)
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    .hero-content {
+        padding: 30px 0;
+    }
+    
+    .facility {
+        height: auto;
+        min-height: 80vh;
     }
 }
