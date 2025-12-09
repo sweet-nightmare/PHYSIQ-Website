@@ -299,6 +299,19 @@ body {
     background-color: var(--primary-red);
 }
 
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    font-size: 48px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-align: center;
+}
+
 /* ============================================
    WHY PHYSIQ SECTION - FINAL FIX
    ============================================ */
@@ -425,6 +438,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 3;
+    /* border: 1px solid var(--primary-red); */
 }
 
 .why-image:hover {
@@ -636,63 +650,163 @@ body {
 }
 
 /* ============================================
-   PROGRAMS SECTION
+   PROGRAMS SECTION (REDESIGN)
    ============================================ */
 .programs {
     padding: 100px 0;
     background-color: var(--dark-bg);
-    text-align: center;
+    position: relative;
+    overflow: hidden; 
 }
+
+/* Background dekorasi halus (opsional) */
+/* .programs::before {
+    content: 'PHYSIQ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20vw;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.02); 
+    z-index: 0;
+    pointer-events: none;
+} */
 
 .program-title-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: relative;
+    z-index: 2;
 }
 
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 50px;
-    font-size: 48px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1;
-    text-align: center;
+.programs .container {
+    max-width: 1400px; 
+    padding: 0 60px;  
+    margin: 0 auto;    
 }
 
 .program-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 50px; 
+    position: relative;
+    z-index: 2;
+    justify-content: center;
 }
 
+/* --- CARD DESIGN --- */
 .program-card {
-    background-color: var(--primary-red);
-    color: var(--white);
+    background: var(--light-gray); 
+    border: 1px solid #333;
     padding: 40px 30px;
-    min-height: 280px;
-    transition: transform 0.3s;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+    position: relative;
+    
+    clip-path: polygon(
+        0 0, 
+        85% 0, 
+        100% 15%, 
+        100% 100%, 
+        0 100%
+    );
+}
+
+.program-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%; 
+    height: 4px;
+    background-color: var(--primary-red);
+    transition: width 0.4s ease;
 }
 
 .program-card:hover {
     transform: translateY(-10px);
-    cursor: pointer;
+    background: #222;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-red); 
 }
 
-.program-card h3 {
+.program-card:hover::before {
+    width: 100%;
+}
+
+.card-content h3 {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 20px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.program-card p {
+.card-content p {
     font-size: 14px;
     line-height: 1.8;
+    color: var(--text-gray);
+    margin-bottom: 30px;
 }
+
+/* --- LEARN MORE BUTTON --- */
+.learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-red);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Memaksa tombol ke bawah */
+}
+
+.learn-more-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.program-card:hover .learn-more-btn {
+    color: #fff; /* Teks jadi putih saat card dihover */
+}
+
+.program-card:hover .learn-more-btn .arrow {
+    transform: translateX(5px); /* Panah bergerak ke kanan */
+    color: var(--primary-red);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    .programs .container {
+        padding: 0 40px; 
+    }
+    .program-grid {
+        gap: 30px; 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .programs .container {
+        padding: 0 20px;
+    }
+    .program-grid {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+}
+
 
 /* ============================================
    SCIENCE SECTION
