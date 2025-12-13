@@ -826,7 +826,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 60px;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
@@ -1089,12 +1089,20 @@ body {
 
 .footer-grid-new {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 2fr; 
-    gap: 40px;
+    grid-template-columns: 0.8fr 255px 2fr; 
+    grid-template-areas: 
+        "brand   map   links"
+        "contact map   links";
+        
+    gap: 10px 40px;
     align-items: start;
 }
 
-/* Col 1: Brand & Mini Forms */
+.footer-block-brand   { grid-area: brand; }
+.footer-block-contact { grid-area: contact; }
+.footer-block-map     { grid-area: map; }
+.footer-block-links   { grid-area: links; }
+
 .footer-logo-img {
     height: 60px;
     width: auto;
@@ -1102,7 +1110,7 @@ body {
 }
 
 .footer-motto {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     font-size: 14px;
     color: var(--white);
     letter-spacing: 2px;
@@ -1112,6 +1120,12 @@ body {
     margin-bottom: 5px;
     font-size: 14px;
     color: var(--white);
+}
+
+.footer-block-links { 
+    display: grid; 
+    grid-template-columns: repeat(5, 150px); 
+    gap: 25px; 
 }
 
 /* Update: Mini Contact Form (Alignment & Color Fix) */
@@ -1362,30 +1376,206 @@ body {
 }
 
 /* ============================================
-   LAPTOP & DESKTOP (Default - No Changes)
+   NEW FOOTER LAYOUT (GRID AREAS SYSTEM)
    ============================================ */
-/* Semua sudah perfect di desktop, skip */
+
+/* 1. SETUP BASE (DESKTOP) - Tampilan tidak berubah */
+.footer-grid-new {
+    display: grid;
+    /* 3 Kolom: Brand+Form | Map | Links */
+    grid-template-columns: 0.8fr 255px 2fr; 
+    
+    /* Disini kuncinya: Kita menyuruh Brand & Contact menumpuk di kolom kiri */
+    grid-template-areas: 
+        "brand   map   links"
+        "contact map   links";
+        
+    gap: 10px 40px;
+    align-items: start;
+}
+
+/* Assign Area ke Class HTML Baru */
+.footer-block-brand   { grid-area: brand; }
+.footer-block-contact { grid-area: contact; }
+.footer-block-map     { grid-area: map; }
+.footer-block-links   { grid-area: links; }
+
+/* Styling Desktop Tetap Sama */
+.footer-block-brand, .footer-block-contact {
+    text-align: left;
+}
+
+.footer-motto { 
+    margin-bottom: 25px; 
+} 
+
+.footer-block-links { 
+    display: grid; 
+    grid-template-columns: repeat(5, 150px); 
+    gap: 25px; 
+}
 
 /* ============================================
-   TABLET LANDSCAPE (Max 1200px)
+   TABLET LANDSCAPE (Max 1024px)
    ============================================ */
-@media (max-width: 1200px) {
-    /* Typography Adjustment */
-    .section-title,
-    .why-title,
-    .facility-title,
-    .data-content h2,
-    .join-text h2,
-    .join-social h3 {
-        font-size: var(--title-size-tablet) !important;
+@media screen and (max-width: 1024px) {
+    /* --- 1. HEADER Section --- */
+    .header-inner {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        grid-template-columns: 225px 1fr 80px; 
+        gap: 10px;
+    }
+
+    .nav {
+        gap: 15px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav a {
+        font-size: 13px; 
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+     
+    /* --- 2. WHY Section --- */
+    .why-physiq .container {
+        max-width: 100%;
+        padding: 0 30px;
+    }
+
+    .why-inner {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr 0.8fr; 
+        gap: 25px;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .why-content p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .why-image {
+        width: 100%; 
+        height: 400px; 
+        background-size: cover;
+    }
+
+    .why-column:nth-child(2) {
+        transform: translateY(-40px);
     }
     
-    .hero-subtitle,
-    .why-content p,
-    .card-content p,
-    .science-item p,
-    .data-content p {
-        font-size: var(--text-size-tablet) !important;
+    .why-column:nth-child(3) {
+        transform: translateY(40px);
+    }
+
+    /* --- 3. SCIENCE Section --- */
+    .science-grid { 
+        gap: 20px; 
+        justify-content: center; 
+    }
+
+    /* --- 4. FOOTER Section --- */
+    .footer-grid-new {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr 1.3fr; 
+        
+        grid-template-areas:
+            "brand contact map"
+            "links links   links";
+            
+        gap: 20px 30px; 
+        align-items: center; 
+        padding-bottom: 20px;
+    }
+
+    .footer-block-brand {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .footer-motto { 
+        margin: 5px 0 0 0; 
+    } 
+
+    .footer-block-contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px; 
+        width: 100%;
+    }
+    
+    .footer-slogan { 
+        display: none; 
+    } 
+
+    .mini-contact-form {
+        display: flex;
+        width: 100%;
+        margin: 0; 
+        height: 40px; 
+    }
+
+    .mini-contact-form input {
+        flex: 1; 
+        width: auto; 
+        height: 100%;
+        margin: 0;
+    }
+
+    .mini-contact-form button {
+        width: 130px !important; 
+        min-width: 130px;
+        height: 100%;
+        margin-left: 5px;
+        font-size: 10px; 
+        padding: 0; 
+    }
+
+    .footer-block-map {
+        display: grid;
+        grid-template-columns: 110px 1fr; 
+        gap: 15px;
+        align-items: center;
+        padding-left: 20px;
+        border-left: 1px solid rgba(255,255,255,0.15); 
+        height: 100%; 
+    }
+
+     .map-widget iframe {
+        height: 90px; 
+        width: 100%;
+        margin: 0;
+        border-radius: 0px;
+        display: block;
+    }
+
+    .address-box p {
+        font-size: 12px;
+        line-height: 1.4;
+        margin: 0;
+        text-align: left;
+    }
+
+    .footer-block-links {
+        border-top: 1px solid rgba(255,255,255,0.15);
+        padding-top: 20px;
+        margin-top: 0px;
+        
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+
+    .link-group h4, 
+    .link-group a { 
+        text-align: center; 
+        font-size: 12px; 
     }
 }
 
@@ -1657,6 +1847,12 @@ body {
     }
     
     /* ========== 10. SCIENCE GRID MOBILE ========== */
+    .science-title-wrapper .section-title {
+        flex-direction: column; /* Membuat elemen menumpuk ke bawah (vertikal) */
+        gap: 5px;               /* Mengatur jarak antar baris agar tidak terlalu jauh */
+        text-align: center;     /* Memastikan teks rata tengah */
+    }
+    
     .science-grid {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -1676,9 +1872,11 @@ body {
     .join-container-layout {
         min-height: auto;
         padding: 60px 20px;
-        gap: 40px;
+        gap: 80px;
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
     }
-    
+ 
     /* Reset absolute positioning */
     .join-text,
     .join-btn-wrapper,
@@ -1691,6 +1889,7 @@ body {
         transform: none !important;
         text-align: center;
         width: 100%;
+        margin: 0 !important;
     }
     
     .join-text h2 {
@@ -1716,43 +1915,124 @@ body {
         padding-right: 15px !important;
     }
     
-    /* Smaller titles */
-    .hero-fitness,
+    .hero-logo {
+        height: 56px;
+    }
+    
+    .hero-fitness {
+        font-size: 66px !important;  
+    }
+
     .section-title,
     .why-title,
     .facility-title {
-        font-size: 28px !important;
+        font-size: 32px !important;
     }
     
-    .data-content h2,
-    .join-text h2 {
-        font-size: 26px !important;
+    .why-title .why-why:first-child {
+        width: 100% !important;
+        display: block !important;
+        /* UBAH ANGKA INI untuk mengatur jarak vertikal */
+        margin-bottom: 0px !important; 
+        line-height: 0.5 !important;
+    }
+
+    .why-title .section-logo {
+        padding-top: 0px;
+        height: 25px;
+        width: auto;
+        margin: 0;
+        margin-top: 5px !important; /* Sedikit jarak dari teks atas */
+        margin-right: 0px !important;
     }
     
+    .why-title .why-why:last-child {
+        margin-top: 5px !important; /* Samakan margin-top dengan logo */
+    }
+
     /* Why Number Smaller */
     .why-number {
         min-width: 50px;
         min-height: 50px;
         font-size: 20px;
     }
+
+    .why-content p {
+        margin: 0;
+        padding-top: 0px;
+        font-size: 140px;
+        line-height: 1.6;
+        color: var(--white);
+    }
+
+    .why-item {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
     
-    /* Footer 1 Column */
+    .science-title-wrapper .section-title {
+        flex-direction: column; /* Menyusun teks vertikal (atas-bawah) */
+        gap: 5px;               /* Jarak antar baris yang rapat */
+        line-height: 1.2;       /* Menjaga spasi baris tetap proporsional */
+        text-align: center;     /* Memastikan teks rata tengah */
+    }
+
+    .data-content h2 {
+        font-size: 26px !important;
+    }
+
+    .join-text h2 {
+        font-size: 30px !important;
+    }
+
+    .join-container-layout {
+        gap: 80px !important;            /* Memberi jarak jauh antar elemen */
+        padding-top: 100px !important;    /* Memberi ruang napas di atas */
+        padding-bottom: 100px !important; /* Memberi ruang napas di bawah */
+        justify-content: center;         /* Sentralisasi konten */
+        min-height: auto !important;     /* Biarkan tinggi menyesuaikan isi+jarak */
+    }
+
+    .join-btn-wrapper {
+        margin: 0 !important;
+    }
+
+    .join-now-btn {
+        font-size: 16px !important;
+        padding: 12px 30px !important;
+    }
+
+    .join-social h3 {
+        font-size: 30px !important;
+        padding-bottom: 10px;
+    }
+
+    /* --- 2. FOOTER MOTTO SATU BARIS --- */
+    .footer-motto {
+        font-size: 12px !important;       /* Perkecil font agar muat di 1 baris */
+        letter-spacing: 3px !important;   /* Hilangkan jarak antar huruf */
+        white-space: nowrap !important;   /* Paksa teks DILARANG turun baris */
+        width: 100%;
+        margin-bottom: 20px !important;
+        padding-left: 2px;
+    }
+
     .footer-col-links {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding-left: 20px;
-        padding-right: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Membagi menjadi 2 kolom: Kiri & Kanan */
+        gap: 30px 20px;                 /* Jarak: Atas-Bawah 30px, Kiri-Kanan 20px */
+        text-align: left;               /* Teks rata kiri (jangan center agar rapi) */
+        padding-left: 10px;             /* Sedikit padding agar tidak mepet layar */
+        padding-right: 10px;
+        width: 100%;
     }
     
     .link-group h4,
     .link-group a {
         text-align: center !important;
     }
-    
-    /* Join Button Smaller */
-    .join-now-btn {
-        font-size: 16px !important;
-        padding: 12px 30px !important;
+    .footer-copyright p {
+        font-size: 12px !important;
     }
 }
 
