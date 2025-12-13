@@ -1,50 +1,21 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHYSIQ FITNESS - Redefining Fitness Through Science</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="https://physiq-fitness.vercel.app/">
-                    <div class="logo">
-                        <img src="../images/physiq_logo.png" alt="PHYSIQ Logo">
-                    </div>
-                </a>
-                <nav class="nav">
-                    <a href="#home">HOME</a>
-                    <a href="#facility">FACILITY</a>
-                    <a href="#program">PROGRAM</a>
-                    <a href="#pricelist">PRICELIST</a>
-                    <a href="#about">ABOUT US</a>
-                    <a href="#join">JOIN NOW</a>
-                </nav>
-                <div class="user-icon">
-                    <img src="../images/profile_icon.png" alt="User Profile">
-                </div>
-            </div>
-        </div>
-    </header>
+<%- include('../partials/head', { title: 'PHYSIQ FITNESS' }) %>
+<%- include('../partials/header') %>
 
+<!-- ISI HOME -->
+<main>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-slider">
             <div class="hero-slides">
-                <div class="hero-slide" style="background-image: url('../images/hero1.png')"></div>
-                <div class="hero-slide" style="background-image: url('../images/hero2.png')"></div>
-                <div class="hero-slide" style="background-image: url('../images/hero3.png')"></div>
+                <div class="hero-slide" style="background-image: url('/images/hero1.png')"></div>
+                <div class="hero-slide" style="background-image: url('/images/hero2.png')"></div>
+                <div class="hero-slide" style="background-image: url('/images/hero3.png')"></div>
             </div>
         </div>
         
         <div class="hero-content">
             <div class="hero-title-wrapper">
-                <img src="../images/physiq_logo.png" alt="PHYSIQ" class="hero-logo">
+                <img src="/images/physiq_logo.png" alt="PHYSIQ" class="hero-logo">
                 <span class="hero-fitness">FITNESS</span>
             </div>
             <div class="hero-divider"></div>
@@ -77,7 +48,7 @@
                 <div class="why-left">
                     <h2 class="why-title">
                         <span class="why-why">WHY</span>
-                        <img src="../images/physiq_logo.png" alt="PHYSIQ" class="section-logo">
+                        <img src="/images/physiq_logo.png" alt="PHYSIQ" class="section-logo">
                         <span class="why-why">?</span>
                     </h2>
 
@@ -114,14 +85,14 @@
 
                 <!-- Middle Column - Image 1 with top accent bar -->
                 <div class="why-column">
-                    <div class="why-image why1" style="background-image: url('../images/why2.png')"></div>
+                    <div class="why-image why1" style="background-image: url('/images/why2.png')"></div>
                     <div class="accent-bar accent-bottom"></div>
                 </div>
 
                 <!-- Right Column - Image 2 with bottom accent bar -->
                 <div class="why-column">
                     <div class="accent-bar accent-top"></div>
-                    <div class="why-image why2" style="background-image: url('../images/why1.png')"></div>
+                    <div class="why-image why2" style="background-image: url('/images/why1.png')"></div>
                 </div>
             </div>
         </div>
@@ -131,12 +102,12 @@
     <section class="facility" id="facility">
         <div class="facility-slider">
             <div class="facility-slides">
-                <div class="facility-slide" style="background-image: url('../images/facility1.png')"></div>
-                <div class="facility-slide" style="background-image: url('../images/facility2.png')"></div>
-                <div class="facility-slide" style="background-image: url('../images/facility3.png')"></div>
-                <div class="facility-slide" style="background-image: url('../images/facility4.png')"></div>
-                <div class="facility-slide" style="background-image: url('../images/facility5.png')"></div>
-                <div class="facility-slide" style="background-image: url('../images/facility6.png')"></div>
+                <div class="facility-slide" style="background-image: url('/images/facility1.png')"></div>
+                <div class="facility-slide" style="background-image: url('/images/facility2.png')"></div>
+                <div class="facility-slide" style="background-image: url('/images/facility3.png')"></div>
+                <div class="facility-slide" style="background-image: url('/images/facility4.png')"></div>
+                <div class="facility-slide" style="background-image: url('/images/facility5.png')"></div>
+                <div class="facility-slide" style="background-image: url('/images/facility6.png')"></div>
             </div>
             
             <div class="facility-content">
@@ -217,7 +188,7 @@
                 <div class="science-item">
                     <div class="science-icon">
                         <picture>
-                            <img src="../images/icon_composition.png" alt="Grafik Analisis" class="science-icon-img" loading="lazy" width="48" height="48">
+                            <img src="/images/icon_composition.png" alt="Grafik Analisis" class="science-icon-img" loading="lazy" width="48" height="48">
                         </picture>
                     </div>
                     <h3>Analisis<br>Komposisi Tubuh</h3>
@@ -226,7 +197,7 @@
                 <div class="science-item">
                     <div class="science-icon">
                         <picture>
-                            <img src="../images/icon_monitoring.png" alt="Grafik Analisis" class="science-icon-img" loading="lazy" width="48" height="48">
+                            <img src="/images/icon_monitoring.png" alt="Grafik Analisis" class="science-icon-img" loading="lazy" width="48" height="48">
                         </picture>
                     </div>
                     <h3>Monitoring<br>Kesehatan & Progress</h3>
@@ -235,7 +206,7 @@
                 <div class="science-item">
                     <div class="science-icon">
                         <picture>
-                            <img src="../images/icon_diet.png" alt="Grafik Analisis" class="science-icon-img" loading="lazy" width="48" height="48">
+                            <img src="/images/icon_diet.png" alt="Grafik Analisis" class="science-icon-img" loading="lazy" width="48" height="48">
                         </picture>
                     </div>
                     <h3>Perancangan<br>Diet & Nutrisi</h3>
@@ -256,7 +227,10 @@
                 <h2><span class="highlight">LATIHAN TERUKUR</span><br>BUKAN SPEKULASI</h2>
                 <p>Di PHYSIQ Fitness, setiap latihan didesain berdasarkan pendekatan ilmiah berbasis data, keamanan, dan efektivitas, bukan mitos atau spekulasi.</p>
                 <p>Kami membantu Anda membangun tubuh kuat dengan metode yang benar, aman, dan terbukti secara sains.</p>
-                <button class="cta-button">SEE PRICELIST</button>
+                <div class="data-btn-group">
+                    <a href="/program#fitness-module" class="cta-button">SEE PRICELIST</a>
+                    <a href="/program#fitness-module" class="cta-button">SEE MODULE</a>
+                </div>
             </div>
         </div>
     </section>
@@ -275,104 +249,19 @@
                 <div class="join-social">
                     <h3><span class="highlight">FOLLOW</span> US</h3>
                     <div class="social-icons-row">
-                        <a href="https://www.instagram.com/physiq_fitnessclub/" target="_blank"><img src="../images/icon_ig.png" alt="IG"></a>
-                        <a href="https://tiktok.com" target="_blank"><img src="../images/icon_tiktok.png" alt="TikTok"></a>
-                        <a href="https://whatsapp.com" target="_blank"><img src="../images/icon_wa.png" alt="WA"></a>
-                        <a href="https://linkedin.com" target="_blank"><img src="../images/icon_in.png" alt="LinkedIn"></a>
+                        <a href="https://www.instagram.com/physiq_fitnessclub/" target="_blank"><img src="/images/icon_ig.png" alt="IG"></a>
+                        <a href="https://tiktok.com" target="_blank"><img src="/images/icon_tiktok.png" alt="TikTok"></a>
+                        <a href="https://whatsapp.com" target="_blank"><img src="/images/icon_wa.png" alt="WA"></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="/images/icon_in.png" alt="LinkedIn"></a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <footer class="footer">
-            <div class="footer-main">
-                <div class="container">
-                    <div class="footer-grid-new">
-                        
-                        <div class="footer-block-brand">
-                            <div class="footer-logo-wrap">
-                                <img src="../images/physiq_logo.png" alt="PHYSIQ" class="footer-logo-img">
-                            </div>
-                            <p class="footer-motto">Redefining Fitness Through Science</p>
-                        </div>
-                        
-                        <div class="footer-block-contact">
-                            <p class="footer-slogan">Get in touch now!</p>
-                            <form class="mini-contact-form">
-                                <input type="email" placeholder="your-email@gmail.com" required>
-                                <button type="submit">EMAIL ME</button>
-                            </form>
-
-                            <form class="mini-contact-form">
-                                <input type="tel" placeholder="+62-8123-4567-8910" required>
-                                <button type="submit">CONTACT ME</button>
-                            </form>
-                        </div>
-
-                        <div class="footer-block-map">
-                            <div class="map-widget">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9536114776574!2d107.63522197475679!3d-6.896152193103031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7003461d203%3A0xa0c5163e6cd42630!2sPhysiq%20Fitness!5e0!3m2!1sen!2sid!4v1765263474120!5m2!1sen!2sid" 
-                                    width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy">
-                                </iframe>
-                            </div>
-                            <div class="address-box">
-                                <p>Jl. Cikutra Baru Raya No.162<br>
-                                Kel. Neglasari, Kec. Cibeunying Kaler<br>
-                                Kota Bandung, Jawa Barat 40124</p>
-                            </div>
-                        </div>
-
-                        <div class="footer-block-links">
-                            <div class="link-group">
-                                <h4>ABOUT US</h4>
-                                <a href="#">Our Story</a>
-                                <a href="#">Vision & Mission</a>
-                                <a href="#">Trainers & Coaches</a>
-                                <a href="#">Award & Recognition</a>
-                            </div>
-                            <div class="link-group">
-                                <h4>FACILITY</h4>
-                                <a href="#">Gym Facilities</a>
-                                <a href="#">Training Zone</a>
-                                <a href="#">Equipment</a>
-                                <a href="#">Wellness Center</a>
-                                <a href="#">Community</a>
-                            </div>
-                            <div class="link-group">
-                                <h4>PROGRAM</h4>
-                                <a href="#">Muscle Gain</a>
-                                <a href="#">Weight Loss</a>
-                                <a href="#">Overall Fitness</a>
-                                <a href="#">Personal Training</a>
-                            </div>
-                            <div class="link-group">
-                                <h4>PRICELIST</h4>
-                                <a href="#">Day Pass</a>
-                                <a href="#">Monthly Pass</a>
-                                <a href="#">3 Month Pass</a>
-                                <a href="#">6 Month Pass</a>
-                                <a href="#">Annual Pass</a>
-                            </div>
-                            <div class="link-group">
-                                <h4>CONTACT US</h4>
-                                <a href="#">Location</a>
-                                <a href="#">Whatsapp</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-copyright">
-                <div class="container">
-                    <p>Copyright &copy; 2026 PHYSIQ FITNESS. All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
     </div>
+</main>
 
-    <script src="js/slider.js"></script>
+<%- include('../partials/footer') %>
+
+<script src="/js/slider.js"></script>
 </body>
 </html>
